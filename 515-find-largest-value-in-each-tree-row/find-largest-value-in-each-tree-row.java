@@ -19,19 +19,19 @@ class Solution {
       return new ArrayList<>();
 
     List<Integer> ans = new ArrayList<>();
-    Queue<TreeNode> q = new ArrayDeque<>(Arrays.asList(root));
+    Queue<TreeNode> q = new ArrayDeque<>(List.of(root));
 
     while (!q.isEmpty()) {
-      int max = Integer.MIN_VALUE;
+      int mx = Integer.MIN_VALUE;
       for (int sz = q.size(); sz > 0; --sz) {
         TreeNode node = q.poll();
-        max = Math.max(max, node.val);
+        mx = Math.max(mx, node.val);
         if (node.left != null)
           q.offer(node.left);
         if (node.right != null)
           q.offer(node.right);
       }
-      ans.add(max);
+      ans.add(mx);
     }
 
     return ans;
