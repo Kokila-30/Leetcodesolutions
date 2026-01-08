@@ -1,22 +1,26 @@
-class Solution {
-  public int[] searchRange(int[] nums, int target) {
-    final int l = firstGreaterEqual(nums, target);
-    if (l == nums.length || nums[l] != target)
-      return new int[] {-1, -1};
-    final int r = firstGreaterEqual(nums, target + 1) - 1;
-    return new int[] {l, r};
-  }
-
-  private int firstGreaterEqual(int[] A, int target) {
-    int l = 0;
-    int r = A.length;
-    while (l < r) {
-      final int m = (l + r) / 2;
-      if (A[m] >= target)
-        r = m;
-      else
-        l = m + 1;
+class Solution 
+{
+    public int[] searchRange(int[] nums, int target)
+    {
+        int l=search (nums, target);
+        int r=search(nums,target+1);
+        return l == r ? new int[] {-1, -1} : new int[] {l, r - 1};        
     }
-    return l;
-  }
+    private int search(int[] nums, int x) 
+    {
+        int left = 0, right = nums.length;
+        while (left < right) 
+        {
+            int mid = (left + right) >>> 1;
+            if (nums[mid] >= x) 
+            {
+                right = mid;
+            } 
+            else
+            {
+                left = mid + 1;
+            }
+        }
+        return left;
+    }
 }
