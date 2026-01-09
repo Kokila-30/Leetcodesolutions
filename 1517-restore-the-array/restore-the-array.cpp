@@ -8,12 +8,12 @@ class Solution {
  private:
   static constexpr int kMod = 1'000'000'007;
 
-  // Returns the number of arrays to restore s[i..n) with k.
+  
   int numberOfArrays(const string& s, int i, int k, vector<int>& mem) {
     if (i == s.length())
-      return 1;  // an empty string ""
+      return 1;  
     if (s[i] == '0')
-      return 0;  // a leading zero
+      return 0;  
     if (mem[i] != -1)
       return mem[i];
 
